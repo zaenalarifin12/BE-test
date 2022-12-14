@@ -5,9 +5,12 @@ var xml2js = require("xml2js");
 
 /* GET home page. */
 router.get("/", async function (req, res, next) {
+
+  let tags = req.params.tags;
+
   let { data } = await axios({
     method: "get",
-    url: "https://api.flickr.com/services/feeds/photos_public.gne",
+    url: `https://api.flickr.com/services/feeds/photos_public.gne?tags=${tags}`,
     headers: {
       "Content-Type": "application/xml",
     },
